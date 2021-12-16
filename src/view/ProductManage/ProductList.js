@@ -48,7 +48,7 @@ function createProductListTableBody() {
   return '';
 }
 
-export default function createProductList() {
+export function createProductList() {
   const productList = elem.createDiv();
   const productListHeader = createProductListHeader();
   productList.append(productListHeader);
@@ -59,4 +59,11 @@ export default function createProductList() {
   productList.innerHTML += productListTable;
 
   return productList;
+}
+
+export function updateProductList() {
+  const oldProductList = elem.$('product-manage-tab').lastChild;
+  oldProductList.remove();
+  const newProductList = createProductList();
+  elem.$('product-manage-tab').append(newProductList);
 }
