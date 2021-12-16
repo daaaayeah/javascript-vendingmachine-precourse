@@ -1,3 +1,3 @@
-import createMain from './view/Main/Main.js';
+import createView from './view/view.js';
 
-createMain();
+createView();

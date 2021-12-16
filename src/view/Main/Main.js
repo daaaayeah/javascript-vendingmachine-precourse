@@ -21,7 +21,10 @@ function createTabMenu() {
 }
 
 export default function createMain() {
+  const main = elem.createDiv();
   const mainHeader = createMainHeader();
   const tabMenu = createTabMenu();
-  elem.$('app').append(mainHeader, tabMenu);
+  main.append(mainHeader, tabMenu);
+
+  return main;
 }
