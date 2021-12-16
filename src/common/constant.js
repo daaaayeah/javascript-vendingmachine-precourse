@@ -20,17 +20,23 @@ export const PRODUCT = {
 
 export const AMOUNT = {
   TO_HAVE: '자판기가 보유할 금액',
-  HAVE: '보유 금액 :',
+  HAVE: '보유 금액: ',
+  HAVE_MIN: 10,
 };
 
 export const COIN = {
   COIN: '동전',
   COUNT: '개수',
   COUNT_UNIT: '개',
+  COUNT_DEFAULT: 0,
   WON_500: '500원',
   WON_100: '100원',
   WON_50: '50원',
   WON_10: '10원',
+  COIN_500: 500,
+  COIN_100: 100,
+  COIN_50: 50,
+  COIN_10: 10,
 };
 
 export const BUTTON = {

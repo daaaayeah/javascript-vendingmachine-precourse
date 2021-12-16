@@ -1,6 +1,6 @@
 import { createTab } from '../../common/element.js';
-import createCoinCharge from './CoinCharge.js';
-import createCoinList from './CoinList.js';
+import { createCoinCharge } from './CoinCharge.js';
+import { createCoinList } from './CoinList.js';
 
 function createChangeChargeTab() {
   return createTab('change-charge-tab');

@@ -30,11 +30,11 @@ function createMachineAmount() {
 
   return `
     <br>
-    ${AMOUNT.HAVE} <span id="vending-machine-charge-amount">${machineAmount}</span>
+    ${AMOUNT.HAVE}<span id="vending-machine-charge-amount">${machineAmount}</span>
   `;
 }
 
-export default function createCoinCharge() {
+export function createCoinCharge() {
   const coinCharge = elem.createDiv();
   const coinChargeHeader = createCoinChargeHeader();
   const coinChargeForm = createCoinChargeForm();
@@ -43,4 +43,9 @@ export default function createCoinCharge() {
   coinCharge.innerHTML += machineAmount;
 
   return coinCharge;
+}
+
+export function updateMachineAmount() {
+  const machineAmount = getLocalStorage('machineAmount');
+  elem.$('vending-machine-charge-amount').textContent = machineAmount;
 }

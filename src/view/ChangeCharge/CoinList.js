@@ -60,7 +60,7 @@ function createCoinListTable() {
   return createTable(count500, count100, count50, count10, COIN.COUNT_UNIT);
 }
 
-export default function createCoinList() {
+export function createCoinList() {
   const coinList = elem.createDiv();
   const coinListHeader = createCoinListHeader();
   coinList.append(coinListHeader);
@@ -68,4 +68,18 @@ export default function createCoinList() {
   coinList.innerHTML += coinListTable;
 
   return coinList;
+}
+
+export function updateMachineCoins() {
+  const machineCoins = getLocalStorageArray('machineCoins');
+  const coins = [
+    'vending-machine-coin-500-quantity',
+    'vending-machine-coin-100-quantity',
+    'vending-machine-coin-50-quantity',
+    'vending-machine-coin-10-quantity',
+  ];
+
+  for (let i = 0; i < 4; i += 1) {
+    elem.$(coins[i]).textContent = machineCoins[i] + COIN.COUNT_UNIT;
+  }
 }
