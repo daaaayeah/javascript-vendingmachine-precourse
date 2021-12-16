@@ -78,16 +78,20 @@ function setMachineCoinsLocalStorage(amountInput) {
   setLocalStorage('machineCoins', JSON.stringify(machineCoins));
 }
 
-function onCoinChargeClick(event) {
-  event.preventDefault();
-  const amountInput = $('vending-machine-charge-input').value * 1;
+export function setMachine(amountInput) {
   setMachineAmountLocalStorage(amountInput);
   updateMachineAmount();
   setMachineCoinsLocalStorage(amountInput);
   updateMachineCoins();
 }
 
-export default function coinCharge() {
+function onCoinChargeClick(event) {
+  event.preventDefault();
+  const amountInput = $('vending-machine-charge-input').value * 1;
+  setMachine(amountInput);
+}
+
+export function coinCharge() {
   $('vending-machine-charge-button').addEventListener(
     'click',
     // eslint-disable-next-line comma-dangle

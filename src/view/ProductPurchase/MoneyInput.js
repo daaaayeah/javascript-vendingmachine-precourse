@@ -34,7 +34,7 @@ function createCustomerAmount() {
   `;
 }
 
-export default function createMoneyInput() {
+export function createMoneyInput() {
   const moneyInput = elem.createDiv();
   const moneyInputHeader = createMoneyInputHeader();
   const moneyInputForm = createMoneyInputForm();
@@ -43,4 +43,9 @@ export default function createMoneyInput() {
   moneyInput.innerHTML += customerAmount;
 
   return moneyInput;
+}
+
+export function updateCustomerAmount() {
+  const customerAmount = getLocalStorage('customerAmount');
+  elem.$('charge-amount').textContent = customerAmount;
 }

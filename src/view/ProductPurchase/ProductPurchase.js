@@ -1,6 +1,6 @@
 import { createTab } from '../../common/element.js';
 import createChangeList from './ChangeList.js';
-import createMoneyInput from './MoneyInput.js';
+import { createMoneyInput } from './MoneyInput.js';
 import createPurchasableList from './PurchasableList.js';
 
 function createProductPurchaseTab() {
