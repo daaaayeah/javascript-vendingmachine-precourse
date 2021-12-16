@@ -9,6 +9,7 @@ export function createDiv() {
 export function createTab(id) {
   const tab = createDiv();
   tab.setAttribute('id', id);
+  tab.style.display = 'none';
 
   return tab;
 }
