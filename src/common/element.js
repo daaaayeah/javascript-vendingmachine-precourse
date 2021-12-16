@@ -1,3 +1,5 @@
+import { getLocalStorage } from './localStorage.js';
+
 export function $(id) {
   return document.getElementById(id);
 }
@@ -10,6 +12,10 @@ export function createTab(id) {
   const tab = createDiv();
   tab.setAttribute('id', id);
   tab.style.display = 'none';
+
+  if (getLocalStorage(id)) {
+    tab.style.display = getLocalStorage(id);
+  }
 
   return tab;
 }

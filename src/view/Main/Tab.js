@@ -1,9 +1,10 @@
 import { $ } from '../../common/element.js';
+import { getLocalStorage } from '../../common/localStorage.js';
 
-export default function displayTab(idx) {
-  const tabs = ['product-manage-tab'];
+export default function updateTabs() {
+  const tabs = ['product-manage-tab', 'change-charge-tab'];
   tabs.forEach((tab) => {
-    $(tab).style.display = 'none';
+    const display = getLocalStorage(tab);
+    $(tab).style.display = display;
   });
-  $(tabs[idx]).style.display = 'block';
 }
