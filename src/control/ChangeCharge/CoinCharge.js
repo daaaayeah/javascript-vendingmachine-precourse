@@ -1,3 +1,4 @@
+import { createCoinCounts, createCoins } from '../../common/array.js';
 import { AMOUNT, COIN } from '../../common/constant.js';
 import { $ } from '../../common/element.js';
 import {
@@ -14,17 +15,8 @@ function setMachineAmountLocalStorage(amountInput) {
   setLocalStorage('machineAmount', machineAmount);
 }
 
-function initCoins() {
-  return [
-    COIN.COUNT_DEFAULT,
-    COIN.COUNT_DEFAULT,
-    COIN.COUNT_DEFAULT,
-    COIN.COUNT_DEFAULT,
-  ];
-}
-
 function getRandomCoin() {
-  const coins = [COIN.COIN_500, COIN.COIN_100, COIN.COIN_50, COIN.COIN_10];
+  const coins = createCoins();
   const randomCoin = window.MissionUtils.Random.pickNumberInList(coins);
 
   return randomCoin;
@@ -48,7 +40,7 @@ function addRandomCoin(randomCoin, randomCoins) {
 
 function getRandomCoins(amountInput) {
   let amount = amountInput;
-  let randomCoins = initCoins();
+  let randomCoins = createCoinCounts();
 
   while (amount >= AMOUNT.HAVE_MIN) {
     const randomCoin = getRandomCoin();
@@ -63,7 +55,7 @@ function getRandomCoins(amountInput) {
 }
 
 function setMachineCoinsLocalStorage(amountInput) {
-  let machineCoins = initCoins();
+  let machineCoins = createCoinCounts();
 
   if (getLocalStorage('machineCoins')) {
     machineCoins = getLocalStorageArray('machineCoins');
