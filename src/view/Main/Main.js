@@ -8,9 +8,9 @@ function createMainHeader() {
 function createTabMenu() {
   const tabMenuDiv = elem.createDiv();
   const menuAttrs = [
-    ['product-purchase-menu', MENU.PRODUCT_MANAGE],
+    ['product-add-menu', MENU.PRODUCT_MANAGE],
     ['vending-machine-manage-menu', MENU.CHANGE_CHARGE],
-    ['product-add-menu', MENU.PRODUCT_PURCHASE],
+    ['product-purchase-menu', MENU.PRODUCT_PURCHASE],
   ];
   menuAttrs.forEach((attr) => {
     const menu = elem.createButton(attr[0], attr[1]);

@@ -5,9 +5,9 @@ import updateTabs from '../../view/Main/Tab.js';
 
 function getMenuIDs() {
   return [
-    'product-purchase-menu',
-    'vending-machine-manage-menu',
     'product-add-menu',
+    'vending-machine-manage-menu',
+    'product-purchase-menu',
   ];
 }
 
