@@ -5,11 +5,17 @@ import { setMachine } from '../ChangeCharge/CoinCharge.js';
 
 function setCustomerAmountLocalStorage(amountInput) {
   let customerAmount = getLocalStorage('customerAmount') * 1;
-  customerAmount += amountInput;
+
+  if (amountInput) {
+    customerAmount += amountInput;
+  } else {
+    customerAmount = 0;
+  }
+
   setLocalStorage('customerAmount', customerAmount);
 }
 
-function setCustomer(amountInput) {
+export function setCustomer(amountInput) {
   setCustomerAmountLocalStorage(amountInput);
   updateCustomerAmount();
 }
@@ -21,6 +27,6 @@ function onMoneyInputClick(event) {
   setMachine(amountInput);
 }
 
-export default function moneyInput() {
+export function moneyInput() {
   $('charge-button').addEventListener('click', onMoneyInputClick);
 }

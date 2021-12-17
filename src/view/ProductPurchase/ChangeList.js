@@ -64,7 +64,7 @@ function createChangeListTable() {
   return createTable(count500, count100, count50, count10, COIN.COUNT_UNIT);
 }
 
-export default function createChangeList() {
+export function createChangeList() {
   const changeList = elem.createDiv();
   const changeListHeader = createChangeListHeader();
   const returnButton = createReturnButton();
@@ -73,4 +73,18 @@ export default function createChangeList() {
   changeList.innerHTML += changeListTable;
 
   return changeList;
+}
+
+export function updateChangeList() {
+  const changes = getLocalStorageArray('changes');
+  const coins = [
+    'coin-500-quantity',
+    'coin-100-quantity',
+    'coin-50-quantity',
+    'coin-10-quantity',
+  ];
+
+  for (let i = 0; i < 4; i += 1) {
+    elem.$(coins[i]).textContent = changes[i] + COIN.COUNT_UNIT;
+  }
 }

@@ -48,7 +48,7 @@ function getRandomCoins(amountInput) {
   return randomCoins;
 }
 
-function setMachineCoinsLocalStorage(amountInput) {
+function setAddMachineCoinsLocalStorage(amountInput) {
   let machineCoins = createCoinCounts();
 
   if (getLocalStorage('machineCoins')) {
@@ -64,8 +64,27 @@ function setMachineCoinsLocalStorage(amountInput) {
   setLocalStorage('machineCoins', JSON.stringify(machineCoins));
 }
 
-export function setMachine(amountInput) {
-  setMachineCoinsLocalStorage(amountInput);
+function setSubtractMachineCoinsLocalStorage() {
+  const machineCoins = getLocalStorageArray('machineCoins');
+  const changes = getLocalStorageArray('changes');
+
+  for (let i = 0; i < machineCoins.length; i += 1) {
+    machineCoins[i] -= changes[i];
+  }
+
+  setLocalStorage('machineCoins', JSON.stringify(machineCoins));
+}
+
+function setMachineCoinsLocalStorage(amount) {
+  if (amount > 0) {
+    setAddMachineCoinsLocalStorage(amount);
+  } else {
+    setSubtractMachineCoinsLocalStorage();
+  }
+}
+
+export function setMachine(amount) {
+  setMachineCoinsLocalStorage(amount);
   updateMachineAmount();
   updateMachineCoins();
 }
