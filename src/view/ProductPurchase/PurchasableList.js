@@ -1,6 +1,7 @@
 import { BUTTON, HEADER, PRODUCT } from '../../common/constant.js';
 import * as elem from '../../common/element.js';
 import { getLocalStorage } from '../../common/localStorage.js';
+import productPurchase from '../../control/ProductPurchase/ProductPurchase.js';
 
 function createPurchasableHeader() {
   return elem.createHeader('h3', HEADER.PURCHASABLE_LIST);
@@ -27,7 +28,7 @@ function createPurchasableListTableData(name, price, quantity) {
       <td class="product-purchase-price" data-product-price="${price}">${price}</td>
       <td class="product-purchase-quantity" data-product-quantity="${quantity}">${quantity}</td>
       <td>
-        <button class="purchase-button">${BUTTON.PURCHASE}</button>
+        <button class="purchase-button" data-product-button="${name}">${BUTTON.PURCHASE}</button>
       </td>
     </tr>
   `;
@@ -52,7 +53,7 @@ function createPurchasableListTableBody() {
   return '';
 }
 
-export default function createPurchasableList() {
+export function createPurchasableList() {
   const purchasableList = elem.createDiv();
   const purchasableHeader = createPurchasableHeader();
   purchasableList.append(purchasableHeader);
@@ -63,4 +64,14 @@ export default function createPurchasableList() {
   purchasableList.innerHTML += purchasableListTable;
 
   return purchasableList;
+}
+
+export function updatePurchasableList() {
+  const oldPurchasableList = elem.$('product-purchase-tab').lastChild
+    .previousSibling;
+  const newPurchasableList = createPurchasableList();
+  elem
+    .$('product-purchase-tab')
+    .replaceChild(newPurchasableList, oldPurchasableList);
+  productPurchase();
 }

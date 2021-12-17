@@ -4,6 +4,10 @@ export function $(id) {
   return document.getElementById(id);
 }
 
+export function getPurchaseButtons(cla) {
+  return document.getElementsByClassName(cla);
+}
+
 export function createDiv() {
   return document.createElement('div');
 }

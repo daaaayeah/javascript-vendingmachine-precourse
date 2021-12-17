@@ -4,6 +4,7 @@ import {
   setLocalStorage,
 } from '../../common/localStorage.js';
 import { updateProductList } from '../../view/ProductManage/ProductList.js';
+import { updatePurchasableList } from '../../view/ProductPurchase/PurchasableList.js';
 
 function getNewProduct() {
   const productNameInput = $('product-name-input').value;
@@ -29,6 +30,7 @@ function onProductAddClick(event) {
   event.preventDefault();
   setProductLocalStorage();
   updateProductList();
+  updatePurchasableList();
 }
 
 export default function productAdd() {
