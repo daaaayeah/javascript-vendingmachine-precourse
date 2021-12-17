@@ -9,12 +9,6 @@ import {
 import { updateMachineAmount } from '../../view/ChangeCharge/CoinCharge.js';
 import { updateMachineCoins } from '../../view/ChangeCharge/CoinList.js';
 
-function setMachineAmountLocalStorage(amountInput) {
-  let machineAmount = getLocalStorage('machineAmount') * 1;
-  machineAmount += amountInput;
-  setLocalStorage('machineAmount', machineAmount);
-}
-
 function getRandomCoin() {
   const coins = createCoins();
   const randomCoin = window.MissionUtils.Random.pickNumberInList(coins);
@@ -71,9 +65,8 @@ function setMachineCoinsLocalStorage(amountInput) {
 }
 
 export function setMachine(amountInput) {
-  setMachineAmountLocalStorage(amountInput);
-  updateMachineAmount();
   setMachineCoinsLocalStorage(amountInput);
+  updateMachineAmount();
   updateMachineCoins();
 }
 

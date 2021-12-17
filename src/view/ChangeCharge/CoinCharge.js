@@ -1,6 +1,10 @@
+import { createCoins } from '../../common/array.js';
 import { AMOUNT, BUTTON, HEADER } from '../../common/constant.js';
 import * as elem from '../../common/element.js';
-import { getLocalStorage } from '../../common/localStorage.js';
+import {
+  getLocalStorage,
+  getLocalStorageArray,
+} from '../../common/localStorage.js';
 
 function createCoinChargeHeader() {
   return elem.createHeader('h3', HEADER.COIN_CHARGE);
@@ -23,10 +27,24 @@ function createCoinChargeForm() {
   return coinChargeForm;
 }
 
-function createMachineAmount() {
-  let machineAmount = getLocalStorage('machineAmount');
+function createMachineCoinsSum() {
+  const machineCoins = getLocalStorageArray('machineCoins');
+  const coins = createCoins();
+  let machineCoinsSum = 0;
 
-  if (!machineAmount) machineAmount = '';
+  for (let i = 0; i < machineCoins.length; i += 1) {
+    machineCoinsSum += coins[i] * machineCoins[i];
+  }
+
+  return machineCoinsSum;
+}
+
+function createMachineAmount() {
+  let machineAmount = '';
+
+  if (getLocalStorage('machineCoins')) {
+    machineAmount = createMachineCoinsSum();
+  }
 
   return `
     <br>
@@ -46,6 +64,6 @@ export function createCoinCharge() {
 }
 
 export function updateMachineAmount() {
-  const machineAmount = getLocalStorage('machineAmount');
+  const machineAmount = createMachineCoinsSum();
   elem.$('vending-machine-charge-amount').textContent = machineAmount;
 }
